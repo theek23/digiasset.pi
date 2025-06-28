@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Features from './components/Features';
@@ -13,9 +13,44 @@ type PageType = 'home' | 'terms' | 'privacy';
 function App() {
   const [currentPage, setCurrentPage] = useState<PageType>('home');
 
-  const showTerms = () => setCurrentPage('terms');
-  const showPrivacy = () => setCurrentPage('privacy');
-  const showHome = () => setCurrentPage('home');
+  // Handle URL routing
+  useEffect(() => {
+    const path = window.location.pathname;
+    if (path === '/terms') {
+      setCurrentPage('terms');
+    } else if (path === '/privacy-policy') {
+      setCurrentPage('privacy');
+    } else {
+      setCurrentPage('home');
+    }
+  }, []);
+
+  const navigateToPage = (page: PageType, url: string) => {
+    setCurrentPage(page);
+    window.history.pushState({}, '', url);
+    window.scrollTo(0, 0);
+  };
+
+  const showTerms = () => navigateToPage('terms', '/terms');
+  const showPrivacy = () => navigateToPage('privacy', '/privacy-policy');
+  const showHome = () => navigateToPage('home', '/');
+
+  // Handle browser back/forward buttons
+  useEffect(() => {
+    const handlePopState = () => {
+      const path = window.location.pathname;
+      if (path === '/terms') {
+        setCurrentPage('terms');
+      } else if (path === '/privacy-policy') {
+        setCurrentPage('privacy');
+      } else {
+        setCurrentPage('home');
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
 
   if (currentPage === 'terms') {
     return <TermsOfService onBack={showHome} />;
