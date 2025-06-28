@@ -54,29 +54,31 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right Visual */}
+          {/* Right Visual - Floating Cards */}
           <div className="relative">
-            <div className="relative z-10">
-              <div className="bg-white rounded-3xl shadow-2xl p-8 mb-6 transform hover:scale-105 transition-transform duration-300">
-                <div className="flex items-center space-x-4 mb-4">
-                  <div className="bg-gradient-to-r from-emerald-500 to-teal-500 p-3 rounded-full">
-                    <Globe className="w-6 h-6 text-white" />
+            <div className="relative z-10 space-y-6">
+              {/* Global Marketplace Card */}
+              <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl p-8 transform hover:scale-105 transition-all duration-300 border border-white/20">
+                <div className="flex items-center space-x-4">
+                  <div className="bg-gradient-to-r from-emerald-500 to-teal-500 p-4 rounded-2xl shadow-lg">
+                    <Globe className="w-8 h-8 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900">Global Marketplace</h3>
-                    <p className="text-sm text-gray-600">Connect with Pi users worldwide</p>
+                    <h3 className="text-xl font-bold text-gray-900 mb-1">Global Marketplace</h3>
+                    <p className="text-gray-600">Connect with Pi users worldwide</p>
                   </div>
                 </div>
               </div>
               
-              <div className="bg-white rounded-3xl shadow-2xl p-8 ml-8 transform hover:scale-105 transition-transform duration-300">
-                <div className="flex items-center space-x-4 mb-4">
-                  <div className="bg-gradient-to-r from-purple-500 to-blue-500 p-3 rounded-full">
-                    <Shield className="w-6 h-6 text-white" />
+              {/* Secure Transactions Card */}
+              <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl p-8 ml-8 transform hover:scale-105 transition-all duration-300 border border-white/20">
+                <div className="flex items-center space-x-4">
+                  <div className="bg-gradient-to-r from-purple-500 to-blue-500 p-4 rounded-2xl shadow-lg">
+                    <Shield className="w-8 h-8 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900">Secure Transactions</h3>
-                    <p className="text-sm text-gray-600">Blockchain-powered security</p>
+                    <h3 className="text-xl font-bold text-gray-900 mb-1">Secure Transactions</h3>
+                    <p className="text-gray-600">Blockchain-powered security</p>
                   </div>
                 </div>
               </div>
